@@ -1,0 +1,89 @@
+header {
+  background: #fa5532;
+  color: #fff;
+  padding: 10px 0;
+
+  .logo {
+    font-weight: 700;
+    font-size: 30px;
+  }
+
+  .search {
+    position: relative;
+
+    input {
+      width: 100%;
+      border: none;
+      background: #fff;
+      height: 40px;
+      padding: 0 10px 0 50px;
+    }
+
+    button {
+      background: none;
+      position: absolute;
+      border: none;
+      color: #fa5532;
+      height: 40px;
+      left: 0;
+      width: 40px;
+      font-size: 24px;
+    }
+  }
+
+  .cart {
+    button {
+      position: relative;
+      font-size: 40px;
+      background: none;
+      border: none;
+      color: #fff;
+
+      span {
+        position: absolute;
+        font-size: 16px;
+        left: 8px;
+        right: 0;
+        bottom: 0;
+        top: 12px;
+        margin: auto;
+        color: #fa5532;
+      }
+    }
+
+  }
+
+  nav {
+    ul {
+      li {
+        display: inline-block;
+        margin-left: 20px;
+      }
+
+      .dropdown {
+
+        button {
+          background: none;
+          border: none;
+          padding: 0;
+          margin: 0;
+          color: #fff;
+        }
+
+        ul {
+          li {
+            width: 100%;
+            padding: 5px 15px;
+            margin-left: 0;
+            font-size: 14px;
+
+            i {
+              width: 25px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

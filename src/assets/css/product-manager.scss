@@ -1,0 +1,57 @@
+.product-manager {
+
+  .form-input {
+    position: relative;
+
+    button {
+      background: #fa5532;
+      height: 40px;
+      color: #fff;
+      width: 100%;
+      border: none;
+    }
+
+    label {
+      position: absolute;
+      left: 16px;
+      color: #8b8b8b;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      transition: .25s ease;
+    }
+
+
+    .text-input {
+      width: 100%;
+      border: 1px solid #ccc;
+      height: 45px;
+      padding: 0 15px;
+
+      &:not(:placeholder-shown) + label {
+        top: 0;
+        color: #8b8b8b;
+        padding: 0 10px;
+        background: #fff;
+        display: inline-block;
+      }
+
+      &:focus {
+        border: 1px solid #fa5532;
+
+        & + label {
+          top: 0;
+          color: #fa5532;
+          padding: 0 10px;
+          background: #fff;
+          display: inline-block;
+        }
+      }
+    }
+
+    textarea {
+      height: 20vh !important;
+      padding: 15px !important;
+    }
+  }
+}
