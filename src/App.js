@@ -11,6 +11,7 @@ import {Login} from "./views/Login";
 import {Header} from "./components/Header";
 import {CartItem} from "./views/CartItem";
 import {ProductManager} from "./views/ProductManager";
+import {Footer} from "./components/Footer";
 
 function App() {
    return (
@@ -35,6 +36,7 @@ function App() {
                </Switch>
             </div>
          </Router>
+         <Footer/>
       </div>
    );
 }

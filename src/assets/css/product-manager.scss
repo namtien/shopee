@@ -19,6 +19,7 @@
       transform: translateY(-50%);
       pointer-events: none;
       transition: .25s ease;
+      user-select: none;
     }
 
 
@@ -52,6 +53,44 @@
     textarea {
       height: 20vh !important;
       padding: 15px !important;
+    }
+  }
+
+  .table-product {
+    table {
+      tr {
+        td {
+          &:nth-child(2) {
+            width: 100px;
+          }
+
+          &:nth-child(3) {
+            width: 120px;
+            text-align: center;
+          }
+
+          &:last-child {
+            width: 110px;
+            text-align: center;
+
+            button {
+              background: #fa5532;
+              color: #fff;
+              border-radius: 5px;
+              padding: 5px 0;
+              width: 100%;
+              margin: 5px 0;
+              border: 1px solid #fa5532;
+
+              &:last-child {
+                background: #fff;
+                color: #fa5532;
+              }
+            }
+          }
+        }
+
+      }
     }
   }
 }
