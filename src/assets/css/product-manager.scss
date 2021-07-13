@@ -59,6 +59,10 @@
   .table-product {
     table {
       tr {
+        &:hover {
+          background: #f3f3f3;
+        }
+
         td {
           &:nth-child(2) {
             width: 100px;

@@ -43,6 +43,13 @@ export const TableProduct = ({setSelectedProduct}) => {
       setSelectedProduct(product);
    }
 
+   function deleteProduct(id){
+       // eslint-disable-next-line no-restricted-globals
+      if (confirm("are you sure")){
+          productItem.child(id).remove()
+      }
+   }
+
    return (
       <div className="shadow p-3 mt-4 bg-white">
          <div className="alert alert-primary fs-6 fw-bold" role="alert">
@@ -89,7 +96,7 @@ export const TableProduct = ({setSelectedProduct}) => {
                            <td>{value.description}</td>
                            <td>
                               <button onClick={() => editProduct(value)}><i className="far fa-edit"></i></button>
-                              <button><i className="fas fa-trash"></i></button>
+                              <button onClick={()=> deleteProduct(value.id)}><i className="fas fa-trash"></i></button>
                            </td>
                         </tr>
                      })
