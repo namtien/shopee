@@ -11,6 +11,24 @@
       -webkit-box-orient: vertical;
     }
   }
+
+  .button-action {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 10px;
+
+    button {
+      border: none;
+      background: #fa5532;
+      color: #ffffff;
+      border-radius: 4px;
+      padding: 8px 0;
+
+      &:focus {
+        background: #fa553294;
+      }
+    }
+  }
 }
 
 .filter-box {
@@ -51,6 +69,29 @@
         &:before {
           display: block;
         }
+      }
+    }
+  }
+}
+
+.pagination-product {
+  text-align: center;
+
+  ul {
+    justify-content: center;
+
+    li {
+      display: inline-block;
+      background: #f3f3f3;
+      line-height: 35px;
+      width: 35px;
+      margin: 0 5px;
+      border-radius: 4px;
+      cursor: pointer;
+
+      &.active {
+        background: #fa5532;
+        color: #fff;
       }
     }
   }

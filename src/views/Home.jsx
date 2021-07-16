@@ -2,22 +2,34 @@ import {useEffect, useState} from "react";
 import fireDB from "../assets/js/firebase";
 import "../assets/css/home.scss"
 import {useHistory} from "react-router-dom";
+import Pagination from "react-js-pagination";
 
 export const Home = () => {
-    const [productList, setProductList] = useState([]);
-    const [gender, setGender] = useState('')
+    const [valueFilter, setValueFilter] = useState('')
     const productItem = fireDB.database().ref("product")
     const history = useHistory();
+    const [currentPage, setCurrentPage] = useState(1)
+    const [perProduct, setPerProduct] = useState([])
+    const perPage = 9
+    const [productList, setProductList] = useState([]);
+
+    const test = []
     useEffect(() => {
         productItem.on('value', (snapshot) => {
-            const productList = Object.keys(snapshot.val()).map(key => snapshot.val()[key]).reverse()
-            setProductList(productList)
+            let data = Object.keys(snapshot.val()).map(key => snapshot.val()[key]).reverse()
+            setProductList(data)
+            setPerProduct(data.slice(
+                (currentPage - 1) * perPage,
+                (currentPage - 1) * perPage + perPage
+            ))
         })
+
     }, [])
 
+
     function ascending(value) {
-        setGender(value)
-        productList.sort((a, b) => {
+        setValueFilter(value)
+        perProduct.sort((a, b) => {
             if (value === 'az') {
                 return (a.name).localeCompare(b.name)
             } else if (value === "za") {
@@ -28,6 +40,16 @@ export const Home = () => {
                 return b.price - a.price
             }
         })
+
+    }
+
+    function onPageChange(pageNumber) {
+        setCurrentPage(pageNumber)
+        setPerProduct(productList.slice(
+            (pageNumber - 1) * perPage,
+            (pageNumber - 1) * perPage + perPage
+        ))
+        setValueFilter('')
     }
 
     return (
@@ -42,7 +64,7 @@ export const Home = () => {
                             <div>
                                 <input
                                     type="radio"
-                                    checked={gender === 'az'}
+                                    checked={valueFilter === 'az'}
                                     value="az"
                                     onChange={event => ascending(event.target.value)}
                                 /> By Name A - Z
@@ -50,7 +72,7 @@ export const Home = () => {
                             <div>
                                 <input
                                     type="radio"
-                                    checked={gender === 'za'}
+                                    checked={valueFilter === 'za'}
                                     value="za"
                                     onChange={event => ascending(event.target.value)}
                                 /> By Name Z - A
@@ -58,7 +80,7 @@ export const Home = () => {
                             <div>
                                 <input
                                     type="radio"
-                                    checked={gender === '09'}
+                                    checked={valueFilter === '09'}
                                     value="09"
                                     onChange={event => ascending(event.target.value)}
                                 /> By Price 0 - 9
@@ -66,7 +88,7 @@ export const Home = () => {
                             <div>
                                 <input
                                     type="radio"
-                                    checked={gender === '90'}
+                                    checked={valueFilter === '90'}
                                     value="90"
                                     onChange={event => ascending(event.target.value)}
                                 /> By Price 9 - 0
@@ -78,7 +100,7 @@ export const Home = () => {
                     <div className="shadow p-3 mt-5 bg-white">
                         <div className="row">
                             {
-                                productList.map((value, index) => {
+                                perProduct.map((value, index) => {
                                     return <div className="col-lg-4 mb-4" key={index}>
                                         <div className="product-item card">
                                             <img src={value.image} className="card-img-top" alt=""/>
@@ -86,18 +108,31 @@ export const Home = () => {
                                                 <h5 className="card-title">{value.name}</h5>
                                                 <h6 className="my-3">{value.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</h6>
                                                 <p className="card-text">{value.description}</p>
-                                                <button onClick={() => {
-                                                    history.push({
-                                                        pathname: `product-detail/${value.name}`,
-                                                        state: value.name
-                                                    })
-                                                }}>Detail
-                                                </button>
+                                                <div className="button-action mt-3">
+                                                    <button onClick={() => {
+                                                        history.push({
+                                                            pathname: `product-detail/${value.name}`,
+                                                            state: value
+                                                        })
+                                                    }}>Detail
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 })
                             }
+                            <div className="col-lg-12">
+                                <div className="pagination-product mt-4">
+                                    <Pagination
+                                        activePage={currentPage}
+                                        itemsCountPerPage={perPage}
+                                        totalItemsCount={productList.length}
+                                        pageRangeDisplayed={5}
+                                        onChange={onPageChange}
+                                    />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

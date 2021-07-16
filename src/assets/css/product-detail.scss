@@ -1,0 +1,17 @@
+.product-detail {
+  h3 {
+    color: #fa5532;
+  }
+
+  button {
+    border: none;
+    background: #fa5532;
+    color: #ffffff;
+    border-radius: 4px;
+    padding: 10px 35px;
+
+    &:focus {
+      background: #fa553294;
+    }
+  }
+}
