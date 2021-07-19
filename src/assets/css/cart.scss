@@ -1,0 +1,52 @@
+.table-cart {
+  table {
+    tr {
+      &:hover {
+        background: #f3f3f3;
+      }
+
+      td {
+        &:nth-child(2) {
+          width: 100px;
+        }
+
+        &:nth-child(3) {
+          width: 120px;
+          text-align: center;
+        }
+
+        &:nth-child(4) {
+          width: 200px;
+          text-align: center;
+
+          button {
+            color: #fa5532;
+            margin: 0 15px;
+            font-size: 25px;
+            border: none;
+            background: none;
+            vertical-align: middle;
+
+          }
+        }
+
+        &:last-child {
+          width: 110px;
+          text-align: center;
+
+          button {
+            background: #fa5532;
+            color: #fff;
+            border-radius: 5px;
+            padding: 5px 0;
+            width: 100%;
+            margin: 5px 0;
+            border: 1px solid #fa5532;
+
+          }
+        }
+      }
+
+    }
+  }
+}

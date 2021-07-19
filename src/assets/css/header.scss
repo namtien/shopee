@@ -58,6 +58,7 @@ header {
       li {
         display: inline-block;
         margin-left: 20px;
+        cursor: pointer;
       }
 
       .dropdown {
@@ -76,6 +77,10 @@ header {
             padding: 5px 15px;
             margin-left: 0;
             font-size: 14px;
+
+            &:hover {
+              background: #f3f3f3;
+            }
 
             i {
               width: 25px;

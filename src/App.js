@@ -25,9 +25,6 @@ function App() {
                         <Route exact={true} path="/">
                             <Home/>
                         </Route>
-                        <Route exact={true} path="/log-in">
-                            <Login/>
-                        </Route>
                         <Route exact={true} path="/cart-item">
                             <CartItem/>
                         </Route>

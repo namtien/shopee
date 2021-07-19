@@ -45,7 +45,7 @@ export const TableProduct = ({setSelectedProduct}) => {
 
     function deleteProduct(id) {
         // eslint-disable-next-line no-restricted-globals
-        if (confirm("Are you sure")) {
+        if (confirm("Are you sure want to delete this product?")) {
             productItem.child(id).remove()
         }
     }
