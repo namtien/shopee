@@ -19,7 +19,7 @@ export const Nav = () => {
                                 aria-expanded="false">Hello, Admin
                         </button>
                         <ul className="dropdown-menu" aria-labelledby="infoUser">
-                            <li><i className="fas fa-user"></i> Info User</li>
+                            <li><Link to="/user"><i className="fas fa-user"></i> Info User</Link></li>
                             <li onClick={() => dispatch(logout())}><i className="fas fa-sign-in-alt"></i> Log
                                 out
                             </li>

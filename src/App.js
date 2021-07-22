@@ -13,6 +13,7 @@ import {CartItem} from "./views/CartItem";
 import {ProductManager} from "./views/ProductManager";
 import {Footer} from "./components/Footer";
 import {ProductDetail} from "./views/ProductDetail";
+import {User} from "./views/User";
 
 function App() {
     return (
@@ -30,6 +31,9 @@ function App() {
                         </Route>
                         <Route exact={true} path="/product-manager">
                             <ProductManager/>
+                        </Route>
+                        <Route exact={true} path="/user">
+                            <User/>
                         </Route>
                         <Route exact={true} path="/product-detail/:product">
                             <ProductDetail/>
