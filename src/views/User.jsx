@@ -1,7 +1,10 @@
 import '../assets/css/user.scss'
+import {useSelector} from "react-redux";
+import {Login} from "./Login";
 
 export const User = () => {
-    return (
+    const isLogin = useSelector(state => state.loginReducer.isLogin)
+    return isLogin ? (
         <div className="info-user mt-5">
             <div className="container">
                 <div className="row row-align">
@@ -178,5 +181,7 @@ export const User = () => {
                 </div>
             </div>
         </div>
+    ) : (
+        <Login/>
     )
 }
